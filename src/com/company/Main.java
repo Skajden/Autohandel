@@ -22,6 +22,21 @@ public class Main {
 
         System.out.println("handlarz posiada " + handlarzGotowka + "$ " + "oraz ma samochod: " + handlarzSamochod);
 
+        String HandlarzImie;
+
+        Scanner MyScanner;
+
+        MyScanner = new Scanner(System.in);
+
+        System.out.println("Podaj Imie:");
+
+        HandlarzImie = MyScanner.nextLine();
+
+        System.out.println("Twoje imię to: " + HandlarzImie);
+
+
+
+
 
     }
 }
