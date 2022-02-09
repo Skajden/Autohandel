@@ -5,6 +5,12 @@ public class Main {
 
     Scanner MyScanner = new Scanner(System.in);
     Scanner enterMyScanner = new Scanner(System.in);
+    public Scanner getEnterMyScanner(){
+        System.out.println("PRESS ENTER");
+        enterMyScanner.nextLine();
+        return enterMyScanner;
+    }
+
 
     String graczImie;
     String graczKlasa;
@@ -21,6 +27,7 @@ public class Main {
         game = new Main();
         game.gracz();
         game.poczatek();
+
 
 
     }
@@ -68,8 +75,8 @@ public class Main {
 
         System.out.println("Twoje imię to: " + graczImie);
         System.out.println("Twoje Klasa to: " + graczKlasa);
-
-        enterMyScanner.nextLine();
+        System.out.println("\n");
+        getEnterMyScanner().nextLine();
 
 
 
@@ -97,7 +104,8 @@ public class Main {
             System.out.println("W drodze do skrzynki zatakował cie potwór");
             if (graczKlasa.equals("Wojownik")) {
                 System.out.println("zabiłeś potwora");
-                enterMyScanner.nextLine();
+                System.out.println("\n");
+                getEnterMyScanner().nextLine();
                 poczatek();
             }
             if (graczKlasa.equals("Złodziej")) {
@@ -105,14 +113,16 @@ public class Main {
             graczHP = graczHP - 2;
             System.out.println("Potwór wygrał walkę i musiałeś uciec");
             System.out.println("twoja HP wynosi:" + graczHP);
-            enterMyScanner.nextLine();
+            System.out.println("\n");
+            getEnterMyScanner().nextLine();
             poczatek();
         }
 
         }
         else if(choice==2){
             System.out.println("Rozpoczołeś swoją podróż");
-            enterMyScanner.nextLine();
+            System.out.println("\n");
+            getEnterMyScanner().nextLine();
             poczatek();
 
 
@@ -123,7 +133,8 @@ public class Main {
             System.out.println("Klasa: " + graczKlasa);
             System.out.println("HP: " + graczHP);
             System.out.println("Pieniądze: " + graczGotowka +"$");
-            enterMyScanner.nextLine();
+            System.out.println("\n");
+            getEnterMyScanner().nextLine();
             poczatek();
 
         }
