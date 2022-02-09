@@ -8,6 +8,7 @@ public class Main {
         Main game;
         game = new Main();
         game.handlarz();
+        game.Salon();
 
 
     }
@@ -20,7 +21,7 @@ public class Main {
         String handlarzSamochod;
         handlarzSamochod = "Ford";
 
-        System.out.println("handlarz posiada " + handlarzGotowka + "$ " + "oraz ma samochod: " + handlarzSamochod);
+        System.out.println("handlarz posiada " + handlarzGotowka + "$ " + "oraz masz samochod: " + handlarzSamochod);
 
         String HandlarzImie;
 
@@ -35,8 +36,14 @@ public class Main {
         System.out.println("Twoje imię to: " + HandlarzImie);
 
 
+    }
 
-
+    public void Salon(){
+        System.out.println("----------------------");
+        System.out.println("\n");
+        System.out.println("Jesteś w salonie");
+        System.out.println("");
+        System.out.println("Wybierz samochód do kupna:");
 
     }
 }
