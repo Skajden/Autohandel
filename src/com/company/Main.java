@@ -27,6 +27,7 @@ public class Main {
         game = new Main();
         game.gracz();
         game.poczatek();
+        game.miasto();
 
 
 
@@ -111,7 +112,8 @@ public class Main {
             if (graczKlasa.equals("Złodziej")) {
 
             graczHP = graczHP - 2;
-            System.out.println("Potwór wygrał walkę i musiałeś uciec");
+            System.out.println("Potwór  zadał ci 2 punkty obrazen");
+            System.out.println("Przegrałeś walkę i musiałeś uciec");
             System.out.println("twoja HP wynosi:" + graczHP);
             System.out.println("\n");
             getEnterMyScanner().nextLine();
@@ -123,7 +125,6 @@ public class Main {
             System.out.println("Rozpoczołeś swoją podróż");
             System.out.println("\n");
             getEnterMyScanner().nextLine();
-            poczatek();
 
 
         }
@@ -143,6 +144,18 @@ public class Main {
             poczatek();
 
         }
+
+    }
+
+    public void miasto(){
+        System.out.println("----------------------");
+        System.out.println("\n");
+        System.out.println("Jesteś w mięśćie");
+        System.out.println(" ");
+        System.out.println("1:Tawerny:");
+        System.out.println("2:Handlarza:");
+        System.out.println("3:Gildi:");
+
 
     }
 }
