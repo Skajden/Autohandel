@@ -1,7 +1,11 @@
 package com.company;
 
 import java.util.Scanner;
+
+
 public class Main {
+
+
 
     Scanner MyScanner = new Scanner(System.in);
     Scanner enterMyScanner = new Scanner(System.in);
@@ -16,6 +20,8 @@ public class Main {
 
 
     }
+
+
 
     String bron;
     String bron1;
@@ -531,7 +537,7 @@ public class Main {
             System.out.println("Wydałeś:1000 ");
 
             graczBron = bron;
-            graczGotowka = graczGotowka - 1000;
+            graczGotowka = graczGotowka - nóż;
 
             System.out.println("\n");
             System.out.println("Twoja nowa broń: " + graczBron);

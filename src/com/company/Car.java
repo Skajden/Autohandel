@@ -1,23 +1,23 @@
-//package com.company;
-//
-//public class Car {
-//        public Double wartosc;
-//        public String marka;
-//        public Double przebieg;
-//        public String kolor;
-//        public String segment;
-//
-//        public Car(int wartosc, String marka, int przebieg, String kolor, String segment) {
-//
-//        }
-//
-//        Car ford;
-//
-//    {
-//        ford = new Car(12000, "Mondeo", 25000, "czerwony", "premium");
-//    }
-//
-//
-//
-//
-//}
+package com.company;
+
+public class Car {
+
+    String nazwa;
+    int cena;
+    int zniszenie;
+
+    public Car(String nazwa, int cena, int zniszenie) {
+        this.nazwa = nazwa;
+        this.cena = cena;
+        this.zniszenie = zniszenie;
+
+    }
+
+    public String getNazwa() {
+        return nazwa;
+    }
+
+    public static void Bron(String[] args) {
+        com.company.Car nóż = new com.company.Car("nóż", 2000, 100);
+    }
+}
