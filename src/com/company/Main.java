@@ -3,6 +3,7 @@ package com.company;
 import java.util.Scanner;
 
 
+
 public class Main {
 
 
@@ -62,6 +63,7 @@ public class Main {
 
 
 
+
     }
 
 
@@ -80,6 +82,8 @@ public class Main {
         goblinHP = 10;
 
         System.out.println("Gracz posiada " + graczGotowka + "$ " + "jego hp wynosi: " + graczHP + "oraz posiada broń " + graczBron);
+
+
 
 
 
@@ -404,6 +408,26 @@ public class Main {
             graczObrazenia = new java.util.Random().nextInt(100);
         }
 
+        if(graczBron.equals("Miecz")){
+            graczObrazenia = new java.util.Random().nextInt(6);
+        }
+        if(graczBron.equals("Topor")){
+            graczObrazenia = new java.util.Random().nextInt(7);
+        }
+        if(graczBron.equals("Włócznia")){
+            graczObrazenia = new java.util.Random().nextInt(8);
+        }
+        if(graczBron.equals("Młot")){
+            graczObrazenia = new java.util.Random().nextInt(9);
+        }
+        if(graczBron.equals("sztylety")){
+            graczObrazenia = new java.util.Random().nextInt(10);
+        }
+
+        if(graczBron.equals("Szable")){
+            graczObrazenia = new java.util.Random().nextInt(11);
+        }
+
         System.out.println("Zatakowałeś goblina i zadałeś mu " + graczObrazenia + " Obrażeń");
 
         goblinHP = goblinHP - graczObrazenia;
@@ -581,4 +605,6 @@ public class Main {
 
 
     }
+    
+    
 }
