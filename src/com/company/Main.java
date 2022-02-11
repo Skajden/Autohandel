@@ -7,21 +7,17 @@ import java.util.Scanner;
 public class Main {
 
 
-
     Scanner MyScanner = new Scanner(System.in);
     Scanner enterMyScanner = new Scanner(System.in);
 
 
-
-
-    public Scanner getEnterMyScanner(){
+    public Scanner getEnterMyScanner() {
         System.out.println("PRESS ENTER");
         enterMyScanner.nextLine();
         return enterMyScanner;
 
 
     }
-
 
 
     String bron;
@@ -34,12 +30,10 @@ public class Main {
     int graczHP;
     int choice;
     int goblinHP;
+    int slimeHP;
 
     int box1Status;
     int box2Status;
-
-
-
 
 
     public static void main(String[] args) {
@@ -52,25 +46,23 @@ public class Main {
         game.tawerna();
         game.gildia();
         game.handlarz();
+        game.arena();
         game.opuszczonyZanek();
         game.walcz();
+        game.walczSlime();
         game.zatakuj();
+        game.zatakujSlime();
         game.dead();
         game.brakpieniedzy();
         game.wygrales();
-
-
-
-
+        game.walczSlime();
+        game.slime();
 
 
     }
 
 
-
-    public void gracz(){
-
-
+    public void gracz() {
 
 
         box1Status = 0;
@@ -78,13 +70,11 @@ public class Main {
 
         graczGotowka = 9000;
         graczHP = 100;
-        graczBron ="nóż";
+        graczBron = "nóż";
         goblinHP = 10;
+        slimeHP = 100;
 
         System.out.println("Gracz posiada " + graczGotowka + "$ " + "jego hp wynosi: " + graczHP + "oraz posiada broń " + graczBron);
-
-
-
 
 
         System.out.println("Podaj Imie:");
@@ -101,14 +91,11 @@ public class Main {
         choice = MyScanner.nextInt();
         graczKlasa = MyScanner.nextLine();
 
-        if(choice == 1){
+        if (choice == 1) {
             graczKlasa = "Wojownik";
-        }
-        else if(choice == 2) {
+        } else if (choice == 2) {
             graczKlasa = "Złodziej";
-        }
-
-        else {
+        } else {
             System.out.println("Podałeś złą klasę postaci ");
             System.out.println("Wybierz jeszcze raz");
             gracz();
@@ -122,13 +109,9 @@ public class Main {
         getEnterMyScanner().nextLine();
 
 
-
-
     }
 
-    public void poczatek(){
-
-
+    public void poczatek() {
 
 
         System.out.println("\n----------------------\n");
@@ -141,114 +124,108 @@ public class Main {
         System.out.println("\n----------------------\n");
 
 
-
         choice = MyScanner.nextInt();
 
 
-        if(choice==1) {
-            if(box1Status==0){
-                box1Status = box1Status +1;
-            System.out.println("\n----------------------\n");
-            System.out.println("W drodze do skrzynki zatakował cie potwór");
-            if (graczKlasa.equals("Wojownik")) {
-                System.out.println("zabiłeś potwora");
-                System.out.println("Otworzyłeś skrzynkę");
-                System.out.println("Skrzynka okazała się pusta");
+        if (choice == 1) {
+            if (box1Status == 0) {
+                box1Status = box1Status + 1;
                 System.out.println("\n----------------------\n");
-                getEnterMyScanner().nextLine();
-                poczatek();
-            }
-            if (graczKlasa.equals("Złodziej")) {
-                graczHP = graczHP - 2;
-                if(graczHP<1){
-                    dead();
+                System.out.println("W drodze do skrzynki zatakował cie potwór");
+                if (graczKlasa.equals("Wojownik")) {
+                    System.out.println("zabiłeś potwora");
+                    System.out.println("Otworzyłeś skrzynkę");
+                    System.out.println("Skrzynka okazała się pusta");
+                    System.out.println("\n----------------------\n");
+                    getEnterMyScanner().nextLine();
+                    poczatek();
                 }
-                System.out.println("Potwór  zadał ci 2 punkty obrazen");
-                System.out.println("Przegrałeś walkę i musiałeś uciec");
-                System.out.println("twoja HP wynosi:" + graczHP);
-                System.out.println("\n----------------------\n");
-                getEnterMyScanner().nextLine();
-                poczatek();
+                if (graczKlasa.equals("Złodziej")) {
+                    graczHP = graczHP - 2;
+                    if (graczHP < 1) {
+                        dead();
+                    }
+                    System.out.println("Potwór  zadał ci 2 punkty obrazen");
+                    System.out.println("Przegrałeś walkę i musiałeś uciec");
+                    System.out.println("twoja HP wynosi:" + graczHP);
+                    System.out.println("\n----------------------\n");
+                    getEnterMyScanner().nextLine();
+                    poczatek();
+                }
             }
-            }
-            if(box1Status==1){
+            if (box1Status == 1) {
                 System.out.println("Już tu byłeś");
                 getEnterMyScanner().nextLine();
                 poczatek();
             }
-        }
-        else if(choice==2){
+        } else if (choice == 2) {
             System.out.println("Rozpoczołeś swoją podróż");
             System.out.println("\n");
             miasto();
             getEnterMyScanner().nextLine();
 
 
-        }
-
-        else if(choice==3){
+        } else if (choice == 3) {
             System.out.println("\n----------------------\n");
             System.out.println("Imie: " + graczImie);
             System.out.println("Klasa: " + graczKlasa);
             System.out.println("HP: " + graczHP);
-            System.out.println("Pieniądze: " + graczGotowka +"$");
+            System.out.println("Pieniądze: " + graczGotowka + "$");
             System.out.println("Broń: " + graczBron);
             System.out.println("\n----------------------\n");
             getEnterMyScanner().nextLine();
             poczatek();
 
-        }
-
-
-
-        else {
+        } else {
             poczatek();
 
         }
 
     }
 
-    public void miasto(){
+    public void miasto() {
         System.out.println("\n----------------------\n");
         System.out.println("Jesteś w mieśćie");
         System.out.println(" ");
         System.out.println("1:Tawerna:");
         System.out.println("2:Handlarza:");
         System.out.println("3:Gildia:");
-        System.out.println("4:Wróć na początek:");
+        System.out.println("4:Arena:");
+        System.out.println("5:Wróć na początek:");
         System.out.println("\n----------------------\n");
 
         choice = MyScanner.nextInt();
 
-        if(choice==1) {
-           tawerna();
-           getEnterMyScanner().nextLine();
-            }
+        if (choice == 1) {
+            tawerna();
+            getEnterMyScanner().nextLine();
+        }
 
-        if(choice==2) {
+        if (choice == 2) {
             handlarz();
             getEnterMyScanner().nextLine();
         }
 
-        if(choice==3) {
+        if (choice == 3) {
             gildia();
             getEnterMyScanner().nextLine();
         }
 
-        if(choice==4) {
+        if (choice == 4) {
+            arena();
+            getEnterMyScanner().nextLine();
+        }
+
+        if (choice == 5) {
             System.out.println("\n----------------------\n");
             System.out.println("3:Wróciełeś się na początek:");
             System.out.println("\n----------------------\n");
             poczatek();
             getEnterMyScanner().nextLine();
-        }
-
-        else {
+        } else {
             miasto();
 
         }
-
-
 
 
     }
@@ -298,7 +275,7 @@ public class Main {
         }
     }
 
-    public void gildia(){
+    public void gildia() {
         System.out.println("\n----------------------\n");
         System.out.println("Jesteś w Gildi wybierz zadanie");
         System.out.println(" ");
@@ -312,17 +289,18 @@ public class Main {
 
         if (choice == 1) {
 
-                System.out.println("\n----------------------\n");
-                System.out.println("idziesz do zamku");
-                System.out.println("\n----------------------\n");
-                getEnterMyScanner().nextLine();
-                opuszczonyZanek();
-            }
+            System.out.println("\n----------------------\n");
+            System.out.println("idziesz do zamku");
+            System.out.println("\n----------------------\n");
+            getEnterMyScanner().nextLine();
+            opuszczonyZanek();
+        }
 
 
         if (choice == 3) {
             miasto();
-        } if (choice == 4) {
+        }
+        if (choice == 4) {
             System.out.println("\n----------------------\n");
             System.out.println("Imie: " + graczImie);
             System.out.println("Klasa: " + graczKlasa);
@@ -340,7 +318,7 @@ public class Main {
 
     }
 
-    public void opuszczonyZanek(){
+    public void opuszczonyZanek() {
         goblinHP = 10;
         System.out.println("\n----------------------\n");
         System.out.println("Jesteś w Zamku");
@@ -361,14 +339,12 @@ public class Main {
             System.out.println("\n----------------------\n");
             getEnterMyScanner().nextLine();
             miasto();
-        }
-
-        else {
+        } else {
             opuszczonyZanek();
         }
     }
 
-    public void walcz(){
+    public void walcz() {
         System.out.println("\n----------------------\n");
         System.out.println("Twoje HP: " + graczHP);
         System.out.println("Goblin HP: " + goblinHP);
@@ -388,43 +364,41 @@ public class Main {
             System.out.println("\n----------------------\n");
             getEnterMyScanner().nextLine();
             miasto();
-        }
-
-        else {
+        } else {
             walcz();
         }
 
     }
 
-    public void zatakuj(){
+    public void zatakuj() {
         int graczObrazenia = 0;
 
 
-        if(graczBron.equals("nóż")){
+        if (graczBron.equals("nóż")) {
             graczObrazenia = new java.util.Random().nextInt(5);
         }
 
-        if(graczBron.equals("Złoty miecz")){
+        if (graczBron.equals("Złoty miecz")) {
             graczObrazenia = new java.util.Random().nextInt(100);
         }
 
-        if(graczBron.equals("Miecz")){
+        if (graczBron.equals("Miecz")) {
             graczObrazenia = new java.util.Random().nextInt(6);
         }
-        if(graczBron.equals("Topor")){
+        if (graczBron.equals("Topor")) {
             graczObrazenia = new java.util.Random().nextInt(7);
         }
-        if(graczBron.equals("Włócznia")){
+        if (graczBron.equals("Włócznia")) {
             graczObrazenia = new java.util.Random().nextInt(8);
         }
-        if(graczBron.equals("Młot")){
+        if (graczBron.equals("Młot")) {
             graczObrazenia = new java.util.Random().nextInt(9);
         }
-        if(graczBron.equals("sztylety")){
+        if (graczBron.equals("sztylety")) {
             graczObrazenia = new java.util.Random().nextInt(10);
         }
 
-        if(graczBron.equals("Szable")){
+        if (graczBron.equals("Szable")) {
             graczObrazenia = new java.util.Random().nextInt(11);
         }
 
@@ -434,12 +408,12 @@ public class Main {
 
         System.out.println("Goblin HP: " + goblinHP);
 
-        if(goblinHP<1){
+        if (goblinHP < 1) {
             wygrales();
         }
 
-        if(goblinHP>0){
-            int goblinObrazenia =0;
+        if (goblinHP > 0) {
+            int goblinObrazenia = 0;
 
             goblinObrazenia = new java.util.Random().nextInt(4);
 
@@ -451,15 +425,15 @@ public class Main {
 
         }
 
-        if(graczHP<1){
+        if (graczHP < 1) {
             dead();
         }
-        if(graczHP>0){
+        if (graczHP > 0) {
             walcz();
         }
     }
 
-    public void dead(){
+    public void dead() {
         System.out.println("\n----------------------\n");
         System.out.println("Zginąłeś zacznij od początku");
         getEnterMyScanner().nextLine();
@@ -468,7 +442,7 @@ public class Main {
 
     }
 
-    public void brakpieniedzy(){
+    public void brakpieniedzy() {
         System.out.println("\n----------------------\n");
         System.out.println("Straciłeś wszystkie piniądze");
         System.out.println("zacznij od początku");
@@ -478,20 +452,18 @@ public class Main {
 
     }
 
-    public void wygrales(){
+    public void wygrales() {
 
-            System.out.println("\n----------------------\n");
-            System.out.println("Udało ci się zabić goblina możesz iść dalej");
-            System.out.println("\n");
-            System.out.println("Znalazłeś złoty miecz i 2000$");
-            System.out.println("1:zabierz wszystko");
-            System.out.println("2:Wróc do miasta");
-            System.out.println("3:Statystki");
-            System.out.println("\n----------------------\n");
+        System.out.println("\n----------------------\n");
+        System.out.println("Udało ci się zabić goblina możesz iść dalej");
+        System.out.println("\n");
+        System.out.println("Znalazłeś złoty miecz i 2000$");
+        System.out.println("1:zabierz wszystko");
+        System.out.println("2:Wróc do miasta");
+        System.out.println("3:Statystki");
+        System.out.println("\n----------------------\n");
 
-            choice = MyScanner.nextInt();
-
-
+        choice = MyScanner.nextInt();
 
 
         if (choice == 1) {
@@ -506,7 +478,7 @@ public class Main {
                 wygrales();
             }
 
-            if(box2Status== 1) {
+            if (box2Status == 1) {
                 System.out.println("Zrobiłeś już to zadanie");
                 System.out.println("Pomieszczenie jest puste");
                 getEnterMyScanner().nextLine();
@@ -516,8 +488,7 @@ public class Main {
 
         if (choice == 2) {
             miasto();
-        }
-        else if (choice == 3) {
+        } else if (choice == 3) {
             System.out.println("\n----------------------\n");
             System.out.println("Imie: " + graczImie);
             System.out.println("Klasa: " + graczKlasa);
@@ -534,16 +505,16 @@ public class Main {
         }
 
 
-
     }
-    public void handlarz(){
+
+    public void handlarz() {
         System.out.println("\n----------------------\n");
         System.out.println("Jesteś u handlarza");
 
 
-        String[] bronie = { "Miecz", "Topor","Włócznia", "Młot", "sztylety", "Szable" };
+        String[] bronie = {"Miecz", "Topor", "Włócznia", "Młot", "sztylety", "Szable"};
         bron = bronie[(int) (Math.random() * bronie.length)];
-        String[] bronie1 = { "Miecz", "Topor","Włócznia", "Młot", "sztylety", "Szable" };
+        String[] bronie1 = {"Miecz", "Topor", "Włócznia", "Młot", "sztylety", "Szable"};
         bron1 = bronie1[(int) (Math.random() * bronie.length)];
         System.out.println("1:kup broń: ");
         System.out.println(bron);
@@ -566,7 +537,7 @@ public class Main {
             System.out.println("\n");
             System.out.println("Twoja nowa broń: " + graczBron);
             System.out.println("Twoje pieniądze: " + graczGotowka);
-            if(graczGotowka<0){
+            if (graczGotowka < 0) {
                 brakpieniedzy();
             }
             getEnterMyScanner().nextLine();
@@ -583,7 +554,7 @@ public class Main {
             System.out.println("\n");
             System.out.println("Twoja nowa broń: " + graczBron);
             System.out.println("Twoje pieniądze: " + graczGotowka);
-            if(graczGotowka<0){
+            if (graczGotowka < 0) {
                 brakpieniedzy();
             }
             getEnterMyScanner().nextLine();
@@ -593,18 +564,167 @@ public class Main {
         if (choice == 3) {
 
             miasto();
-        }
-
-
-        else {
+        } else {
             handlarz();
         }
 
 
+    }
 
+    public void arena() {
+        System.out.println("\n----------------------\n");
+        System.out.println("Jesteś na arenie");
+        System.out.println("Wbierz swojego przeciwnika");
+        System.out.println("1:Slime");
+        System.out.println("2:Wróć do miasta ");
+        System.out.println("\n----------------------\n");
+
+        choice = MyScanner.nextInt();
+
+
+        if (choice == 1) {
+
+            slime();
+
+        }
+
+        if (choice == 2) {
+
+            miasto();
+
+        }
+
+        else{
+            arena();
+        }
 
 
     }
-    
-    
+
+    public void slime() {
+        System.out.println("\n----------------------\n");
+        System.out.println("Twoje HP: " + graczHP);
+        System.out.println("Slime HP: " + slimeHP);
+
+        System.out.println("\n1: walcz");
+        System.out.println("\n2: Uciekaj");
+        System.out.println("\n----------------------\n");
+        if (choice == 1) {
+            walczSlime();
+        }
+        if (choice == 2) {
+            System.out.println("\n----------------------\n");
+            System.out.println("Uciekłeś do miasta:");
+            System.out.println("\n----------------------\n");
+            getEnterMyScanner().nextLine();
+            miasto();
+        } else {
+            slime();
+        }
+    }
+
+    public void walczSlime() {
+        System.out.println("\n----------------------\n");
+        System.out.println("Twoje HP: " + graczHP);
+        System.out.println("Slime HP: " + slimeHP);
+
+        System.out.println("\n1: Atakuj");
+        System.out.println("\n2: Uciekaj");
+        System.out.println("\n----------------------\n");
+
+        choice = MyScanner.nextInt();
+
+        if (choice == 1) {
+            zatakujSlime();
+        }
+        if (choice == 2) {
+            System.out.println("\n----------------------\n");
+            System.out.println("Uciekłeś do miasta:");
+            System.out.println("\n----------------------\n");
+            getEnterMyScanner().nextLine();
+            miasto();
+        } else {
+            walczSlime();
+        }
+
+    }
+
+    public void zatakujSlime() {
+        int graczObrazenia = 0;
+
+
+        if (graczBron.equals("nóż")) {
+            graczObrazenia = new java.util.Random().nextInt(5);
+        }
+
+        if (graczBron.equals("Złoty miecz")) {
+            graczObrazenia = new java.util.Random().nextInt(100);
+        }
+
+        if (graczBron.equals("Miecz")) {
+            graczObrazenia = new java.util.Random().nextInt(6);
+        }
+        if (graczBron.equals("Topor")) {
+            graczObrazenia = new java.util.Random().nextInt(7);
+        }
+        if (graczBron.equals("Włócznia")) {
+            graczObrazenia = new java.util.Random().nextInt(8);
+        }
+        if (graczBron.equals("Młot")) {
+            graczObrazenia = new java.util.Random().nextInt(9);
+        }
+        if (graczBron.equals("sztylety")) {
+            graczObrazenia = new java.util.Random().nextInt(10);
+        }
+
+        if (graczBron.equals("Szable")) {
+            graczObrazenia = new java.util.Random().nextInt(11);
+        }
+
+        System.out.println("Zatakowałeś slime i zadałeś mu " + graczObrazenia + " Obrażeń");
+
+        slimeHP = slimeHP - graczObrazenia;
+
+        System.out.println("Slime HP: " + slimeHP);
+
+        if (slimeHP < 1) {
+            wygralesSlime();
+        }
+
+        if (slimeHP > 0) {
+            int slimeObrazenia = 0;
+
+            slimeObrazenia = new java.util.Random().nextInt(10);
+
+            System.out.println("Slime zatakował i otrzymałeś " + slimeObrazenia + " Obrażeń");
+
+            graczHP = graczHP - slimeObrazenia;
+
+            System.out.println("Gracz HP wynosi: " + graczHP);
+
+        }
+
+        if (graczHP < 1) {
+            dead();
+        }
+        if (graczHP > 0) {
+            walczSlime();
+        }
+    }
+
+    public void wygralesSlime() {
+
+        System.out.println("\n----------------------\n");
+        System.out.println("Udało ci się zabić Slime");
+        System.out.println("\n");
+        System.out.println("Za wygraną otrzymałeś 2000$");
+        System.out.println("\n----------------------\n");
+
+        getEnterMyScanner().nextLine();
+        miasto();
+
+
+    }
 }
+
+
