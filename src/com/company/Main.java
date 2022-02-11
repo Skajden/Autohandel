@@ -537,7 +537,7 @@ public class Main {
             System.out.println("Wydałeś:1000 ");
 
             graczBron = bron;
-            graczGotowka = graczGotowka - nóż;
+            graczGotowka = graczGotowka - 1000;
 
             System.out.println("\n");
             System.out.println("Twoja nowa broń: " + graczBron);
