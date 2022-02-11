@@ -5,12 +5,20 @@ public class Main {
 
     Scanner MyScanner = new Scanner(System.in);
     Scanner enterMyScanner = new Scanner(System.in);
+
+
+
+
     public Scanner getEnterMyScanner(){
         System.out.println("PRESS ENTER");
         enterMyScanner.nextLine();
         return enterMyScanner;
+
+
     }
 
+    String bron;
+    String bron1;
 
     String graczImie;
     String graczKlasa;
@@ -36,11 +44,15 @@ public class Main {
         game.miasto();
         game.tawerna();
         game.gildia();
+        game.handlarz();
         game.opuszczonyZanek();
         game.walcz();
         game.zatakuj();
         game.dead();
+        game.brakpieniedzy();
         game.wygrales();
+
+
 
 
 
@@ -49,6 +61,9 @@ public class Main {
 
 
     public void gracz(){
+
+
+
 
         box1Status = 0;
         box2Status = 0;
@@ -134,8 +149,10 @@ public class Main {
                 poczatek();
             }
             if (graczKlasa.equals("Złodziej")) {
-
                 graczHP = graczHP - 2;
+                if(graczHP<1){
+                    dead();
+                }
                 System.out.println("Potwór  zadał ci 2 punkty obrazen");
                 System.out.println("Przegrałeś walkę i musiałeś uciec");
                 System.out.println("twoja HP wynosi:" + graczHP);
@@ -172,6 +189,8 @@ public class Main {
 
         }
 
+
+
         else {
             poczatek();
 
@@ -197,7 +216,7 @@ public class Main {
             }
 
         if(choice==2) {
-            tawerna();
+            handlarz();
             getEnterMyScanner().nextLine();
         }
 
@@ -419,6 +438,16 @@ public class Main {
 
     }
 
+    public void brakpieniedzy(){
+        System.out.println("\n----------------------\n");
+        System.out.println("Straciłeś wszystkie piniądze");
+        System.out.println("zacznij od początku");
+        getEnterMyScanner().nextLine();
+        gracz();
+        System.out.println("\n----------------------\n");
+
+    }
+
     public void wygrales(){
 
             System.out.println("\n----------------------\n");
@@ -473,6 +502,75 @@ public class Main {
             wygrales();
 
         }
+
+
+
+    }
+    public void handlarz(){
+        System.out.println("\n----------------------\n");
+        System.out.println("Jesteś u handlarza");
+
+
+        String[] bronie = { "Miecz", "Topor","Włócznia", "Młot", "sztylety", "Szable" };
+        bron = bronie[(int) (Math.random() * bronie.length)];
+        String[] bronie1 = { "Miecz", "Topor","Włócznia", "Młot", "sztylety", "Szable" };
+        bron1 = bronie1[(int) (Math.random() * bronie.length)];
+        System.out.println("1:kup broń: ");
+        System.out.println(bron);
+        System.out.println("2:kup broń: ");
+        System.out.println(bron1);
+        System.out.println(" ");
+        System.out.println("3: Wróć do miasta ");
+        System.out.println("\n----------------------\n");
+
+        choice = MyScanner.nextInt();
+
+
+        if (choice == 1) {
+            System.out.println("Kupiłeś nową broń: " + bron);
+            System.out.println("Wydałeś:1000 ");
+
+            graczBron = bron;
+            graczGotowka = graczGotowka - 1000;
+
+            System.out.println("\n");
+            System.out.println("Twoja nowa broń: " + graczBron);
+            System.out.println("Twoje pieniądze: " + graczGotowka);
+            if(graczGotowka<0){
+                brakpieniedzy();
+            }
+            getEnterMyScanner().nextLine();
+            handlarz();
+
+        }
+
+        if (choice == 2) {
+            System.out.println("Kupiłeś nową broń: " + bron1);
+            System.out.println("Wydałeś:1000 ");
+
+            graczBron = bron1;
+            graczGotowka = graczGotowka - 1000;
+            System.out.println("\n");
+            System.out.println("Twoja nowa broń: " + graczBron);
+            System.out.println("Twoje pieniądze: " + graczGotowka);
+            if(graczGotowka<0){
+                brakpieniedzy();
+            }
+            getEnterMyScanner().nextLine();
+            handlarz();
+        }
+
+        if (choice == 3) {
+
+            miasto();
+        }
+
+
+        else {
+            handlarz();
+        }
+
+
 
 
 
