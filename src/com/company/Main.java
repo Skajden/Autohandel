@@ -572,6 +572,8 @@ public class Main {
     }
 
     public void arena() {
+
+        slimeHP = 100;
         System.out.println("\n----------------------\n");
         System.out.println("Jesteś na arenie");
         System.out.println("Wbierz swojego przeciwnika");
